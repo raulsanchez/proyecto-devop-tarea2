@@ -6,11 +6,20 @@ pipeline {
                 docker { image 'node:20.11.1-alpine3.19' }
             }
             stages {
-                stage('checkout') {
+                stage('Install') {
                     steps {
-                        echo "hola mundo"
+                        npm install
                     }
-
+                }
+                stage('Test') {
+                    steps {
+                        npm run test
+                    }
+                }
+                stage('Build') {
+                    steps {
+                        npm run build
+                    }
                 }
             }
         }
